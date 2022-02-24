@@ -1,22 +1,29 @@
 #include <stdio.h>
+#include <string.h>
 
-void input(int *mode, char *str);
+int check_line();
 
 int main() {
-   int mode;
    char str[100];
+   
+   int lines = check_line();
+   printf("%d", lines);
 
-   input(&mode, str);
-
-   puts(str);
+   FILE *file = fopen("input.txt", "r");
+   fgets(str, 100, file);
+   printf("%s", str);
+   fclose(file);
+  
 }
 
-void input(int *mode, char *str) {
-   printf("Select mode for input data:\n 0 - manual input\n 1 - from the file\nMode: ");
-   scanf("%d", mode);
+int check_line() {
+   FILE *file =  fopen("input.txt", "r");
+   int lines = 0;
+   
+   while (!feof(file))
+      if (fgetc(file) == '\n')
+         lines++;
 
-   if (*mode == 0) {
-      printf("Input string: ");
-      while (fgets(str, 100, stdin) != NULL);
-   }
+   fclose(file);
+   return lines;
 }
