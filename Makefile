@@ -1,2 +1,10 @@
-hello: main.c
-	gcc -Wall -Werror -o hello main.c && ./hello && rm hello
+all: main
+
+main: main.c
+	gcc -Wall -Werror -o main main.c
+
+clean:
+	rm main
+
+run:
+	./main	
