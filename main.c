@@ -43,15 +43,15 @@ int isCorrect(char* str)
     int check = 1;
 
     int open = 0, close = 0;
-    int a, b;
+    int open_brackets, close_braket; // position
     for (int i = 0; i < strlen(str); i++) {
         if (str[i] == '(') {
             open++;
-            a = i + 1;
+            open_brackets = i + 1;
         }
         if (str[i] == ')') {
             close++;
-            b = i - 1;
+            close_braket = i - 1;
         }
     }
     if (open != close) {
@@ -65,7 +65,7 @@ int isCorrect(char* str)
     }
 
     int k = 0;
-    for (int i = a; i <= b; i++)
+    for (int i = open_brackets; i <= close_braket; i++)
         if (isalpha(str[i])) {
             k = i;
             break;
@@ -97,12 +97,12 @@ int isCorrect(char* str)
         return check;
     }
 
-    if (strlen(str) > b + 2) {
+    if (strlen(str) > close_braket + 2) {
         check = 0;
         printf("%s\n", str);
-        for (int i = 0; i <= (b + 2); i++)
+        for (int i = 0; i <= (close_braket + 2); i++)
             printf(" ");
-        printf("^\nError at column %d: unexpected token\n", b + 3);
+        printf("^\nError at column %d: unexpected token\n", close_braket + 3);
     }
 
     return check;
