@@ -1,10 +1,10 @@
 #include "functions.h"
 
-#include <stdio.h>
-#include <string.h>
 #include <ctype.h>
-#include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int check_line()
 {
@@ -72,8 +72,7 @@ int isCorrect(char* str)
 
     if (strstr(object, "circle") == NULL) {
         check = 0;
-        printf("%s\n^\nError at column 0: expected 'circle'\n",
-               str);
+        printf("%s\n^\nError at column 0: expected 'circle'\n", str);
         return check;
     }
 
@@ -88,22 +87,25 @@ int isCorrect(char* str)
     return check;
 }
 
-triangle gettriangle(char *str) {
+triangle gettriangle(char* str)
+{
     triangle buf = {0, 0, 0};
-    char *open_bracket = strchr(str, '(');
-    //char *close_braket = strchr(str, ')') + 1;
-    char *cur = open_bracket + 1;
+    char* open_bracket = strchr(str, '(');
+    // char *close_braket = strchr(str, ')') + 1;
+    char* cur = open_bracket + 1;
     char digit[3][128];
     int index = 0;
     while (isdigit(*cur) || *cur == '.')
         digit[0][index++] = *cur++;
     buf.x = atof(digit[0]);
-    while (!isdigit(*cur)) cur++; 
+    while (!isdigit(*cur))
+        cur++;
     index = 0;
     while (isdigit(*cur) || *cur == '.')
         digit[1][index++] = *cur++;
     buf.y = atof(digit[1]);
-    while (!isdigit(*cur)) cur++; 
+    while (!isdigit(*cur))
+        cur++;
     index = 0;
     while (isdigit(*cur) || *cur == '.')
         digit[2][index++] = *cur++;
@@ -111,8 +113,9 @@ triangle gettriangle(char *str) {
     return buf;
 }
 
-void writePandS(triangle tr1) {
+void writePandS(triangle tr1)
+{
     printf("Triangle:\n");
-    printf("P: %f\n", 2*M_PI*tr1.r);
-    printf("S: %f\n", M_PI*tr1.r*tr1.r);
+    printf("P: %f\n", 2 * M_PI * tr1.r);
+    printf("S: %f\n", M_PI * tr1.r * tr1.r);
 }

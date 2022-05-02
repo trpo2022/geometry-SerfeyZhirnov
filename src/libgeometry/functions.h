@@ -10,7 +10,7 @@ typedef struct {
 
 int check_line();
 int isCorrect(char* str);
-triangle gettriangle(char *str);
+triangle gettriangle(char* str);
 void writePandS(triangle tr1);
 
 #endif //  _FUNCTIONS_H_
