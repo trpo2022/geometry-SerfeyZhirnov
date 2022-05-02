@@ -1,29 +1,10 @@
-#include <ctype.h>
+#include "functions.h"
+
 #include <stdio.h>
 #include <string.h>
-
-int check_line();
-int isCorrect(char* str);
-
-int main()
-{
-    char str[100];
-
-    int lines = check_line();
-
-    FILE* file = fopen("input.txt", "r");
-    for (int line = 0; line < lines; line++) {
-        fgets(str, 100, file);
-        str[strlen(str) - 1] = '\0';
-
-        if (isCorrect(str))
-            printf("Correct\n");
-        printf("\n");
-    }
-
-    fclose(file);
-    return 0;
-}
+#include <ctype.h>
+#include <stdlib.h>
+#include <math.h>
 
 int check_line()
 {
@@ -44,7 +25,7 @@ int isCorrect(char* str)
 
     int open = 0, close = 0;
     int open_brackets, close_braket; // position
-    for (int i = 0; i < strlen(str); i++) {
+    for (int i = 0; i < (int)strlen(str); i++) {
         if (str[i] == '(') {
             open++;
             open_brackets = i + 1;
@@ -89,15 +70,14 @@ int isCorrect(char* str)
         i++;
     }
 
-    if (strstr(object, "triangle") == NULL
-        && strstr(object, "circle") == NULL) {
+    if (strstr(object, "circle") == NULL) {
         check = 0;
-        printf("%s\n^\nError at column 0: expected 'circle' or 'triangle'\n",
+        printf("%s\n^\nError at column 0: expected 'circle'\n",
                str);
         return check;
     }
 
-    if (strlen(str) > close_braket + 2) {
+    if ((int)strlen(str) > close_braket + 2) {
         check = 0;
         printf("%s\n", str);
         for (int i = 0; i <= (close_braket + 2); i++)
@@ -106,4 +86,33 @@ int isCorrect(char* str)
     }
 
     return check;
+}
+
+triangle gettriangle(char *str) {
+    triangle buf = {0, 0, 0};
+    char *open_bracket = strchr(str, '(');
+    //char *close_braket = strchr(str, ')') + 1;
+    char *cur = open_bracket + 1;
+    char digit[3][128];
+    int index = 0;
+    while (isdigit(*cur) || *cur == '.')
+        digit[0][index++] = *cur++;
+    buf.x = atof(digit[0]);
+    while (!isdigit(*cur)) cur++; 
+    index = 0;
+    while (isdigit(*cur) || *cur == '.')
+        digit[1][index++] = *cur++;
+    buf.y = atof(digit[1]);
+    while (!isdigit(*cur)) cur++; 
+    index = 0;
+    while (isdigit(*cur) || *cur == '.')
+        digit[2][index++] = *cur++;
+    buf.r = atof(digit[2]);
+    return buf;
+}
+
+void writePandS(triangle tr1) {
+    printf("Triangle:\n");
+    printf("P: %f\n", 2*M_PI*tr1.r);
+    printf("S: %f\n", M_PI*tr1.r*tr1.r);
 }
