@@ -14,7 +14,7 @@ int main()
         str[strlen(str) - 1] = '\0';
 
         if (isCorrect(str)) {
-            triangle tr1;
+            circle tr1;
             tr1 = gettriangle(str);
             writePandS(tr1);
         }

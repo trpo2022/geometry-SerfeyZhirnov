@@ -6,11 +6,11 @@ typedef struct {
     double x;
     double y;
     double r;
-} triangle;
+} circle;
 
 int check_line();
 int isCorrect(char* str);
-triangle gettriangle(char* str);
-void writePandS(triangle tr1);
+circle gettriangle(char* str);
+void writePandS(circle tr1);
 
 #endif //  _FUNCTIONS_H_

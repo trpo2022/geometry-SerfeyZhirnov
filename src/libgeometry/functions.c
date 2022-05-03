@@ -87,9 +87,9 @@ int isCorrect(char* str)
     return check;
 }
 
-triangle gettriangle(char* str)
+circle gettriangle(char* str)
 {
-    triangle buf = {0, 0, 0};
+    circle buf = {0, 0, 0};
     char* open_bracket = strchr(str, '(');
     // char *close_braket = strchr(str, ')') + 1;
     char* cur = open_bracket + 1;
@@ -113,9 +113,9 @@ triangle gettriangle(char* str)
     return buf;
 }
 
-void writePandS(triangle tr1)
+void writePandS(circle tr1)
 {
-    printf("Triangle:\n");
+    printf("Circle:\n");
     printf("P: %f\n", 2 * M_PI * tr1.r);
     printf("S: %f\n", M_PI * tr1.r * tr1.r);
 }
