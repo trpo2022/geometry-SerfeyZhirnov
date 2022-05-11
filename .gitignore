@@ -36,6 +36,8 @@
 *.hex
 *.out
 main
+geometry
+test
 
 # Debug files
 *.dSYM/
