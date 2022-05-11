@@ -3,7 +3,7 @@ LIB_NAME = libgeometry
 
 CFLAGS = -Wall -Wextra -Werror
 CPPFLAGS = -I src -MP -MMD
-LDFLAGS =
+LDFLAGS = -lm
 LDLIBS =
 
 BIN_DIR = bin

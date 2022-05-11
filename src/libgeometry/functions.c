@@ -87,7 +87,7 @@ int isCorrect(char* str)
     return check;
 }
 
-circle gettriangle(char* str)
+circle getcircle(char* str)
 {
     circle buf = {0, 0, 0};
     char* open_bracket = strchr(str, '(');
@@ -113,9 +113,19 @@ circle gettriangle(char* str)
     return buf;
 }
 
-void writePandS(circle tr1)
+void writePandS(circle circ)
 {
     printf("Circle:\n");
-    printf("P: %f\n", 2 * M_PI * tr1.r);
-    printf("S: %f\n", M_PI * tr1.r * tr1.r);
+    printf("P: %f\n", 2 * M_PI * circ.r);
+    printf("S: %f\n", M_PI * circ.r * circ.r);
+}
+
+void PrintIntersect(circle *circles, int circles_count) {
+    printf("\nFound %d circles\n", circles_count);
+    if (circles_count >= 1) {
+        for (int i = 0; i < circles_count - 1; i++)
+            for (int j = i + 1; j < circles_count; j++)
+                if (sqrt(pow(circles[i].x - circles[j].x, 2) + pow(circles[i].y - circles[j].y, 2)) <= (circles[i].r + circles[j].r))
+                    printf("Circle%d and Circle%d intersect\n", i + 1, j + 1); 
+    }
 }

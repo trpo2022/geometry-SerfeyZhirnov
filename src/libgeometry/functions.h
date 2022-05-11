@@ -9,8 +9,9 @@ typedef struct {
 } circle;
 
 int check_line();
-int isCorrect(char* str);
-circle gettriangle(char* str);
-void writePandS(circle tr1);
+int isCorrect(char*);
+circle getcircle(char*);
+void writePandS(circle);
+void PrintIntersect(circle *, int);
 
 #endif //  _FUNCTIONS_H_
