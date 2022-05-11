@@ -12,6 +12,6 @@ int check_line();
 int isCorrect(char*);
 circle getcircle(char*);
 void writePandS(circle);
-void PrintIntersect(circle *, int);
+void PrintIntersect(circle*, int);
 
 #endif //  _FUNCTIONS_H_

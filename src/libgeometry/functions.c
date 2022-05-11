@@ -120,12 +120,15 @@ void writePandS(circle circ)
     printf("S: %f\n", M_PI * circ.r * circ.r);
 }
 
-void PrintIntersect(circle *circles, int circles_count) {
+void PrintIntersect(circle* circles, int circles_count)
+{
     printf("\nFound %d circles\n", circles_count);
     if (circles_count >= 1) {
         for (int i = 0; i < circles_count - 1; i++)
             for (int j = i + 1; j < circles_count; j++)
-                if (sqrt(pow(circles[i].x - circles[j].x, 2) + pow(circles[i].y - circles[j].y, 2)) <= (circles[i].r + circles[j].r))
-                    printf("Circle%d and Circle%d intersect\n", i + 1, j + 1); 
+                if (sqrt(pow(circles[i].x - circles[j].x, 2)
+                         + pow(circles[i].y - circles[j].y, 2))
+                    <= (circles[i].r + circles[j].r))
+                    printf("Circle%d and Circle%d intersect\n", i + 1, j + 1);
     }
 }
